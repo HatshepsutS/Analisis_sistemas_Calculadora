@@ -43,7 +43,7 @@ class Login extends React.Component {
       
       const undiv=  <div className = "center-container" style={styles} id="equis">
             
-               <h1 className="AlignCenter" > Bienvenido  </h1>
+               <h1 className="AlignCenter" > Bienvenido a mi sufrimiento  </h1>
             <div class="form-group">
                 <label class="form-label" for="User">Usuario</label>
                 <input placeholder="Ingrese el usuario" type="text" id="User" class="form-control" />
@@ -55,10 +55,6 @@ class Login extends React.Component {
             <button className="btn btn-primary" onClick={() => this.validar(document.getElementById("User").value,document.getElementById("password").value)}>
                 Submit
               </button>
-              <button className="btn btn-primary">
-                Ayudenme por favor
-              </button>
-
 
             </div>
 
