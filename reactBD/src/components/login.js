@@ -55,6 +55,11 @@ class Login extends React.Component {
             <button className="btn btn-primary" onClick={() => this.validar(document.getElementById("User").value,document.getElementById("password").value)}>
                 Submit
               </button>
+              <button className="btn btn-primary">
+                Ayudenme por favor
+              </button>
+
+
             </div>
 
 
