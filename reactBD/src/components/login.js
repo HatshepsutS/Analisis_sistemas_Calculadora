@@ -53,9 +53,10 @@ class Login extends React.Component {
     
                     </div>
             <button className="btn btn-primary" onClick={() => this.validar(document.getElementById("User").value,document.getElementById("password").value)}>
-                Submit
+                Submitacionmagica ascsv asv as
+                            
               </button>
-
+      
             </div>
 
 

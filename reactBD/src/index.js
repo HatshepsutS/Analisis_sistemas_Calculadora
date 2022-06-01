@@ -15,6 +15,9 @@ const App = () => {
                 <Route exact path="/Proyecto/">
                     <Login />
                 </Route>
+                <Route exact path="/Proyecto/Login">
+                    <Login />
+                </Route>               
                 <Route exact path="/Proyecto/home">
                     <Home />
                 </Route>
