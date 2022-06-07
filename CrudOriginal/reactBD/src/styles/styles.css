@@ -1,0 +1,61 @@
+.MarginContainer {
+    margin-top: 24px;
+}
+
+.AlignCenter {
+    text-align: center;
+    display: flex;
+    margin: auto;
+    justify-content: center;
+}
+
+.CustomLink {
+    color: white;
+    text-decoration: none;
+}
+
+.CustomLink:hover {
+    color: white;
+    text-decoration: none;
+}
+
+.M-6 {
+    margin:6px;
+}
+
+.ImageContainer {
+    width: 140px;
+    height: 140px;
+    object-fit: contain;
+}
+.login-container{
+    width: 600px;
+    margin: auto;
+    background-color: rgb(30,30,50);
+    color:aliceblue;
+    margin-top: 440px;
+    border-radius: 40px;
+    padding: 80px;
+}
+.btn{
+    margin-left: 2rem;
+    margin-bottom: 1rem;
+}
+.form-group{
+    margin-bottom: 2rem;
+    margin-left: 2rem;
+    margin-right: 2rem;
+}
+.form-label{
+    display: block;
+}
+.registro-container{
+    width:40vw;
+    margin: auto;
+    margin-top: 5vh;
+    background-color:rgb(240,240,240);
+    color: black;
+    border-radius: 5%;
+    border-bottom-color: dodgerblue;
+}
+
