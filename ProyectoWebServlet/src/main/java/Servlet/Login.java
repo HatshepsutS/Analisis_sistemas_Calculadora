@@ -40,13 +40,13 @@ PrintWriter out;
             JSONObject jsonObject=new  JSONObject();
              PreparedStatement prp; 
              try {
-                prp = conn.prepareStatement("use crud2");
+                prp = conn.prepareStatement("use Calculadora_Grafica");
                 prp.executeUpdate();
             } catch (SQLException ex) {
                 out.println("<h2>ERROR. No se pudo acceder a la base de datos</h2>");
             }
               Statement Comprobacion;
-        String consulta="select * from usuarios where USERNAME='"+usr+"' and PASSWORD='"+pass+"';";
+        String consulta="select * from users where USERNAME='"+usr+"' and PASSWORD='"+pass+"';";
     try {
         Comprobacion=conn.createStatement();
         ResultSet ex=Comprobacion.executeQuery(consulta);

@@ -11,7 +11,7 @@ import javax.swing.JOptionPane;
 
 public class Conexion {
 
-    private static String db= "CRUD2";
+    private static String db= "Calculadora_Grafica";
     private static String user="root";
     private static String pass="1234";
     private static String url="jdbc:mysql://localhost/"+db;
