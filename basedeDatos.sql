@@ -26,6 +26,7 @@ create database Calculadora_Grafica;
  C_XSigno varchar (2) , 
  C_YSigno  varchar (2), 
  C_Constante int ,
+ Coordenadas varchar (45),
  primary  KEY (idPregunta),
  constraint fklogin foreign key (fk_idLOGIN) references users (idLOGIN)
  );
