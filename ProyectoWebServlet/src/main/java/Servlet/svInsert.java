@@ -17,10 +17,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import net.sf.json.JSONObject;
 
-/**
- *
- * @author andyl
- */
+
 public class svInsert extends HttpServlet {
 
       Connection conn;
@@ -29,33 +26,34 @@ public class svInsert extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        /*Encabezados Generales y definicion de variables de la funcion*/
         conn = Conexion.getConnect();
         response.addHeader("Access-Control-Allow-Origin", "*");
             response.setCharacterEncoding("utf8");
             response.setContentType("application/json");
             out = response.getWriter();
-        String title=request.getParameter("Titulo");
-        String type=request.getParameter("Type");
-        String x1=request.getParameter("X1");
-        String y1=request.getParameter("Y1");
-        String x2=request.getParameter("X2");
-        String y2=request.getParameter("Y2");
+        String TituloB=request.getParameter("TituloB");
+        String R_XB=request.getParameter("R_XB");
+        String R_signoB=request.getParameter("R_signoB");
+        String R_constanteB=request.getParameter("R_constanteB");
+        String C_XB=request.getParameter("C_XB");
+        String C_YB=request.getParameter("C_YB");
+        String C_XsignoB=request.getParameter("C_XsignoB");
+        String C_YsignoB=request.getParameter("C_YsignoB");
+        String C_constanteB=request.getParameter("C_constanteB");
+        String Session= Conexion.getSession();
         JSONObject jsonObject=new  JSONObject();
         PreparedStatement prp;
-        /*Seleccion de base de datos*/
         try {
-            prp = conn.prepareStatement("use CRUD2");
+          out.print("Titulo"+TituloB);
+            prp = conn.prepareStatement("use Calculadora_Grafica");
             prp.executeUpdate();
         } catch (SQLException ex) {
             out.println("<h2>ERROR. No se pudo acceder a la base de datos</h2>");
         }
-       
         PreparedStatement in;
-        /*Insercion del elemento en la base de datos y creacion de respuesta de confirmacion*/
         try {
-            out.print("Titulo"+title+"\nTipo:"+type);
-            in = conn.prepareStatement("INSERT INTO preguntas(Titulo,Tipo,X1,Y1,X2,Y2,File) values('"+title+"','"+type+"','"+x1+"','"+y1+"','"+x2+"','"+y2+"','');");
+           out.print("Titulo"+TituloB);
+            in = conn.prepareStatement("INSERT INTO ejercicios(fk_USERNAME,Nombre_pregunta,R_X,R_signo,R_Constante,C_X, C_Y,C_XSigno,C_YSigno,C_constante,Coordenadas) values('"+Session+"','"+TituloB+"','"+R_XB+"','"+R_signoB+"','"+R_constanteB+"','"+ C_XB+"','"+ C_YB+"','"+ C_XsignoB+"','"+ C_YsignoB+"','"+ C_constanteB+"', '(0,0)'   );");
             in.executeUpdate();
             jsonObject.put("validacion","1");
         } catch (SQLException ex) {

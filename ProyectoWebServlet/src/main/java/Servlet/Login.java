@@ -53,6 +53,7 @@ PrintWriter out;
         if(ex.next()){
              jsonObject.put("usuario",ex.getString(1));
              System.out.println(ex.getString(1));
+             Conexion.setSession (usr);
         }
         else{
             jsonObject.put("usuario","error");

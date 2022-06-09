@@ -1,23 +1,22 @@
+drop database Calculadora_Grafica;
 create database Calculadora_Grafica;
  use Calculadora_Grafica;
- 
+
  create table users (
- idLOGIN INT NOT NULL AUTO_INCREMENT,
- USERNAME VARCHAR(45) NULL ,
+ USERNAME VARCHAR(45) not NULL ,
  PASSWORD VARCHAR(45) NULL ,
- PRIMARY KEY (idLOGIN) );
+ PRIMARY KEY (USERNAME) );
  
    INSERT INTO users (USERNAME, PASSWORD) VALUES ('admin', '1234');
    INSERT INTO users (USERNAME, PASSWORD) VALUES ('Cesar', 'elmalvadotinguiriringui');
    INSERT INTO users (USERNAME, PASSWORD) VALUES ('Hannah', '1234');
    INSERT INTO users (USERNAME, PASSWORD) VALUES ('Nani', '1234');
- 
- select * from users; 
- 
- 
+
+
  create table ejercicios (
- fk_idLOGIN INT,
+ fk_USERNAME VARCHAR(45) not NULL,
  idPregunta int not null auto_increment,
+ Nombre_pregunta VARCHAR(100) not NULL,
  R_X INT,
  R_signo varchar (2) , 
  R_Constante INT,
@@ -28,8 +27,11 @@ create database Calculadora_Grafica;
  C_Constante int ,
  Coordenadas varchar (45),
  primary  KEY (idPregunta),
- constraint fklogin foreign key (fk_idLOGIN) references users (idLOGIN)
+ constraint fklogin foreign key (fk_USERNAME) references users (USERNAME)
  );
+INSERT INTO ejercicios (fk_USERNAME, Nombre_pregunta,R_X,R_signo,R_Constante,C_X, C_Y,C_XSigno,C_YSigno,C_constante,Coordenadas) values('admin','PreguntaP1','2','1','2','3','3','2','1','1','(0,0)' ); 
  
- 
- 
+ select * from  ejercicios;
+
+
+select idPregunta, Nombre_pregunta, R_X, R_signo,R_Constante, C_X, C_Y, C_XSigno, C_Constante, Coordenadas from ejercicios where fk_USERNAME='admin'

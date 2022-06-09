@@ -15,7 +15,8 @@ public class Conexion {
     private static String user="root";
     private static String pass="1234";
     private static String url="jdbc:mysql://localhost/"+db;
-  private static Connection conn;
+    private static Connection conn;
+    public static String sesion_user; 
   public static Connection getConnect(){
       try{
           Class.forName("com.mysql.jdbc.Driver");
@@ -26,6 +27,17 @@ conn=DriverManager.getConnection(url,user,pass);
               
               }
       return conn;
+    }
+
+
+   public  static void  setSession (String usuario ){
+    sesion_user=usuario;
   }
-  
+   public static String getSession ( ){
+   return  sesion_user;
+  }
+
+
+
+
 }

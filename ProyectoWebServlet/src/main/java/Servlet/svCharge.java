@@ -19,10 +19,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import net.sf.json.JSONObject;
 
-/**
- *
- * @author andyl
- */
 public class svCharge extends HttpServlet {
 Connection conn;
 PrintWriter out;

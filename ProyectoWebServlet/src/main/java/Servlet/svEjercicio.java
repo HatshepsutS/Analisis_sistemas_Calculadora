@@ -22,10 +22,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import net.sf.json.JSONObject;
 
-/**
- *
- * @author andyl
- */
 public class svEjercicio extends HttpServlet {
 Connection conn;
 PrintWriter out;
