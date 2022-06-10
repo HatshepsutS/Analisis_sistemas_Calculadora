@@ -35,15 +35,15 @@ public class svDelete extends HttpServlet {
         PreparedStatement prp;
         /*Seleccion de base de datos*/
         try {
-            prp = conn.prepareStatement("use CRUD2");
+            prp = conn.prepareStatement("use  Calculadora_Grafica;");
             prp.executeUpdate();
         } catch (SQLException ex) {
             out.println("<h2>ERROR. No se pudo acceder a la base de datos</h2>");
         }
-       /*Eliminacion de elemento en la base de datos por medio del id obtenido*/
+       
         PreparedStatement in;
         try {
-            in = conn.prepareStatement("delete from preguntas where ID_Pregunta='"+id+"';");
+            in = conn.prepareStatement("delete from ejercicios  where idPregunta='"+id+"';");
             in.executeUpdate();
             response.sendRedirect("/ProyectoWebServlet");
         } catch (SQLException ex) {

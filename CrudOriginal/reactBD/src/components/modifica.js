@@ -15,7 +15,6 @@ class Modifica extends React.Component {
     pregunta:{}
   }
 
-  //Funcion para cargar los datos de la pregunta a modificar
   cargaDatos=()=>{
         axios.get("http://localhost:8080/ProyectoWebServlet/svCharge?ID_Modificar="+this.props.ID).then(response => { 
             this.setState({

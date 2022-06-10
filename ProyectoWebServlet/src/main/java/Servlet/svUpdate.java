@@ -27,6 +27,9 @@ public class svUpdate extends HttpServlet {
             response.setCharacterEncoding("utf8");
             response.setContentType("application/json");
             out = response.getWriter();
+
+
+
         String id = request.getParameter("ID_Pregunta");
         String title=request.getParameter("Titulo");
         String type=request.getParameter("Type");
@@ -34,6 +37,11 @@ public class svUpdate extends HttpServlet {
         String y1=request.getParameter("Y1");
         String x2=request.getParameter("X2");
         String y2=request.getParameter("Y2");
+
+
+
+
+
         JSONObject jsonObject=new  JSONObject();
         PreparedStatement prp;
         /*Seleccion de base de datos*/

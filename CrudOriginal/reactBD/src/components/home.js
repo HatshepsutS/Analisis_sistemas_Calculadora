@@ -6,12 +6,12 @@ class Home extends React.Component {
 
     
     state = {
-        datos:[]
-        ,status: false
+        datos:[],status: false
     } 
     //Carga de lista json con todos los elementos de las preguntas existentes
     cargaDatos=()=>{
         axios.get("http://localhost:8080/ProyectoWebServlet/svLista").then(response => { 
+            console.log(response.data);
             this.setState({
                 datos:response.data
                 ,status:true

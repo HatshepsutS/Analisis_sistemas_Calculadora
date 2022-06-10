@@ -24,10 +24,6 @@ import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
-/**
- *
- * @author andyl
- */
 public class svUpFile extends HttpServlet {
    private boolean isMultipart;
    private String filePath;
