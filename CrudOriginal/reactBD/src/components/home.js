@@ -47,7 +47,7 @@ class Home extends React.Component {
         const { redirect } = this.state;
 // funcion para redireccionar al menu del crud
         if (redirect) {
-        return <Redirect to='/ProyectoWebServlet/subidaArchivo.html'/>;
+        return <Redirect to='/ProyectoWebServlet/home'/>;
         }
         const { data, showAlert, alertText } = this.state;
         return (

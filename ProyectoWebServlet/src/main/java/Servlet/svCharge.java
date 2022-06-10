@@ -19,6 +19,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import net.sf.json.JSONObject;
 
+/**
+ *
+ * @author andyl
+ */
 public class svCharge extends HttpServlet {
 Connection conn;
 PrintWriter out;
@@ -26,7 +30,6 @@ PrintWriter out;
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         {
-            /*Encabezados Generales*/
             conn=Conexion.getConnect();
             response.addHeader("Access-Control-Allow-Origin", "*");
             response.setCharacterEncoding("utf8");
@@ -35,30 +38,50 @@ PrintWriter out;
             String id=request.getParameter("ID_Modificar");
             JSONObject jsonObject=new  JSONObject();
              PreparedStatement prp; 
-             /*Seleccion de base de datos*/
              try {
-                prp = conn.prepareStatement("use CRUD2");
+                prp = conn.prepareStatement("use Calculadora_Grafica");
                 prp.executeUpdate();
             } catch (SQLException ex) {
                 out.println("<h2>ERROR. No se pudo acceder a la base de datos</h2>");
             }
               Statement Comprobacion;
-        String consulta="SELECT Titulo,Tipo,X1,Y1,X2,Y2 from preguntas where ID_Pregunta='"+id+"';";
+              String consulta= "select Nombre_pregunta, R_X, R_signo,R_Constante, C_X, C_Y, C_XSigno,C_YSigno,C_Constante,Coordenadas from ejercicios where idPregunta='"+id+"'";
         /*Consulta de servlet a base de datos para obtener los campos requeridos a la hora de modificar una pregunta por medio del componente modifica de react*/
     try { 
         Comprobacion=conn.createStatement();
         ResultSet ex=Comprobacion.executeQuery(consulta);
         while(ex.next()){
-             jsonObject.put("TITLE",ex.getString(1));
-             if(ex.getString(2).equals("1")){
-                 jsonObject.put("TYPE","Calculo de Pendiente");
+    
+            jsonObject.put("TITLE",ex.getString(1));
+             jsonObject.put("XRECTA",ex.getString(2));
+          
+            if(ex.getString(3).equals("1")){
+                 jsonObject.put("SIGNORECTA","+");
              }else{
-                 jsonObject.put("TYPE","Calculo de la distancia");
-             }             
-             jsonObject.put("COORDX1",ex.getString(3));
-             jsonObject.put("COORDY1",ex.getString(4));
-             jsonObject.put("COORDX2",ex.getString(5));
-             jsonObject.put("COORDY2",ex.getString(6));
+                 jsonObject.put("SIGNORECTA","-");
+             }   
+             jsonObject.put("CONSRECTA",ex.getString(4));
+             jsonObject.put("XCIRC",ex.getString(5));
+             jsonObject.put("YCIRC",ex.getString(6));
+   
+             if(ex.getString(7).equals("1")){
+                 jsonObject.put("CIRCXSIGNO","+");
+             }else{
+                 jsonObject.put("CIRCXSIGNO","-");
+             }
+
+             if(ex.getString(8).equals("1")){
+                 jsonObject.put("CIRCYSIGNO","+");
+             }else{
+                 jsonObject.put("CIRCYSIGNO","-");
+             }
+
+             jsonObject.put("CIRCONS",ex.getString(9));
+             jsonObject.put("COORD",ex.getString(10));
+             out.print(jsonObject);
+
+
+
 
 /*Escritura de un objeto JSON para el almacenamiento y acceso a los datos de la pregunta*/
         }

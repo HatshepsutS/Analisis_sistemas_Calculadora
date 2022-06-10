@@ -21,7 +21,6 @@ public class svUpdate extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        /*Encabezados Generales y definicion de variables*/
         conn = Conexion.getConnect();
         response.addHeader("Access-Control-Allow-Origin", "*");
             response.setCharacterEncoding("utf8");

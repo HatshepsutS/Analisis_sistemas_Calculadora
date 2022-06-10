@@ -16,19 +16,19 @@ class Modifica extends React.Component {
   }
 
   cargaDatos=()=>{
-        axios.get("http://localhost:8080/ProyectoWebServlet/svCharge?ID_Modificar="+this.props.ID).then(response => { 
-            this.setState({
-                datos:response.data
-                ,status:true
-            });
+    axios.get("http://localhost:8080/ProyectoWebServlet/svCharge?ID_Modificar="+this.props.ID).then(response => { 
+        this.setState({
+            datos:response.data
+            ,status:true
         });
+    });
 
-    }
-    //funciones y componentes cargados al iniciar
-  componentDidMount() {
-        this.cargaDatos();
-        
-    }
+}
+//funciones y componentes cargados al iniciar
+componentDidMount() {
+    this.cargaDatos();
+    
+}
     cambiar = () =>{
         this.setState((state)=>({
           val:true,
@@ -37,14 +37,7 @@ class Modifica extends React.Component {
     }
     //Funcion de validacion y realizacion de envio de informacion a nuestro servlet
       validar=(Titulo,Tipo,X1,Y1,X2,Y2) =>{
-        var datos={
-            Titulo: Titulo,
-            Type: Tipo,
-            X1:X1,
-            Y1:Y1,
-            X2:X2,
-            Y2:Y2
-        }
+      
 
         axios.get("http://localhost:8080/ProyectoWebServlet/svUpdate?ID_Pregunta="+this.props.ID+"&Titulo="+Titulo+"&Type="+Tipo+"&X1="+X1+"&Y1="+Y1+"&X2="+X2+"&Y2="+Y2)
           .then(() => this.setState({ redirect: true })).catch(error => {
@@ -58,6 +51,7 @@ class Modifica extends React.Component {
       }
 
     render() {
+      
       const styles = {
           padding : '5px'
       }
@@ -69,7 +63,7 @@ class Modifica extends React.Component {
         
       const qId = (new URLSearchParams(window.location.search).get("val") == "true")? true:false;
       const undiv=  <div className = "registro-container" style={styles} id="equis">
-               <h1 className="AlignCenter" > Modifica una nueva pregunta </h1>
+                <h1 className="AlignCenter" > Modifica una nueva pregunta </h1>
             {this.state.status===true &&
             (
             this.state.datos.map((preg,i)=>{
@@ -80,34 +74,68 @@ class Modifica extends React.Component {
                  <label class="form-label">Titulo anterior: {preg.TITLE}</label>
                 <input placeholder="Ingrese el titulo de la pregunta" type="text" id="Title" class="form-control"/>
             </div>
-            <div class="form-group"><label class="form-label" for="Type">Tipo de pregunta</label>
-                    <label class="form-label">Tipo de pregunta anterior: {preg.TYPE}</label>
-                <select value={this.state.value} onChange={this.handleChange.bind(this)} id="Type" class="form-select">            
-                <option value="1">Calculo de Pendiente</option>
-                <option value="2">Calculo de la distancia</option>
+                <div class="form-group">
+                <h2 className="AlignCenter" > Ingrese los datos de la recta</h2><h2 className="AlignCenter" > y= ax+b </h2>
+                <label class="form-label" for="R_X">Valor de a  </label>
+                <label class="form-label">Valor anterior: {preg.XRECTA}</label>
+                <input placeholder="Ingrese el valor de a" type="number" id="R_X" class="form-control" />
+                </div>
+                <div class="form-group">
+                <label class="form-label" for="R_signo">Signo de la constante </label>      
+                <label class="form-label">Valor anterior: {preg.SIGNORECTA}</label>  
+                <select value={this.state.value} onChange={this.handleChange.bind(this)} id="R_signo" class="form-select">            
+                <option value="1">+</option>
+                <option value="2">-</option>
+                </select>               
+                  </div>
+                <div class="form-group">
+                <label class="form-label" for="R_constante">Constante de la recta (b) </label>
+                <label class="form-label">Valor anterior: {preg.CONSRECTA}</label>
+                <input placeholder="Ingrese el valor de b " type="number" min="0" id="R_constante" class="form-control" />
+                 </div>
+                <div class="form-group">
+                <h2 className="AlignCenter" > Ingrese los datos de la ecuación del círculo</h2>
+                <h2 className="AlignCenter" >(x-a)²+(y-b)²=r²</h2>
+                <label class="form-label" for="C_X">Valor de a   </label>
+                <label class="form-label">Valor anterior: {preg.XCIRC}</label>
+                <input placeholder="Ingrese el valor de a" type="number" min="0" id="C_X" class="form-control" />
+                 </div>
+
+                <div class="form-group">
+                <label class="form-label" for="C_Xsigno">Signo de a </label>
+                <label class="form-label">Valor anterior: {preg.CIRCXSIGNO}</label>
+                <select value={this.state.value} onChange={this.handleChange.bind(this)} id="C_Xsigno" class="form-select">            
+                <option value="1">+</option>
+                <option value="2">-</option>
                 </select>
-            </div>
-                <div class="form-group">
-                <label class="form-label" for="X1">Coordenada x1 </label>
-                <label class="form-label">Valor anterior: {preg.COORDX1}</label>
-                <input placeholder="Ingrese la coordenada x del primer punto" type="number" id="X1" class="form-control" />
                 </div>
                 <div class="form-group">
-                <label class="form-label" for="Y1">Coordenada y1 </label>
-                <label class="form-label">Valor anterior: {preg.COORDY1}</label>                 
-                <input placeholder="Ingrese la coordenada y del primer punto" type="number" id="Y1" class="form-control" />
+                <label class="form-label" for="C_Y">Valor de b   </label>
+                <label class="form-label">Valor anterior: {preg.YCIRC}</label>
+                <input placeholder="Ingrese el valor de a" type="number" min="0" id="C_Y" class="form-control" />
                 </div>
                 <div class="form-group">
-                <label class="form-label" for="X2">Coordenada x2 </label>
-                <label class="form-label">Valor anterior: {preg.COORDX2}</label>
-                <input placeholder="Ingrese la coordenada x del segundo punto" type="number" id="X2" class="form-control" />
-                </div>
+                <label class="form-label" for="C_Ysigno">Signo de b </label>
+                <label class="form-label">Valor anterior: {preg.CIRCYSIGNO}</label>
+                <select value={this.state.value} onChange={this.handleChange.bind(this)} id="C_Ysigno" class="form-select">            
+                <option value="1">+</option>
+                <option value="2">-</option>
+                </select>
+                </div>    
                 <div class="form-group">
-                <label class="form-label" for="Y2">Coordenada y2 </label>
-                <label class="form-label">Valor anterior: {preg.COORDY2}</label>
-                <input placeholder="Ingrese la coordenada y del segundo punto" type="number" id="Y2" class="form-control" />
+
+                <label class="form-label" for="C_constante">Valor de r   </label>
+                <label class="form-label">Valor anterior: {preg.CIRCONS}</label>
+                <input placeholder="Ingrese el valor de r" type="number" min="0" id="C_constante" class="form-control" />
                 </div>
 
+                <div class="form-group">
+
+          
+<label class="form-label">Coordenadas de instersección : {preg.COORD}</label>
+
+</div>
+                
             </div>
                  );
         })
