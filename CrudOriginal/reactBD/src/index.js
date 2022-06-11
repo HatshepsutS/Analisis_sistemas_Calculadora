@@ -10,7 +10,7 @@ import Login from "./components/login";
 import Formulario from "./components/formulario";
 import Modifica from "./components/modifica";
 import Pregunta from "./components/pregunta";
-
+import Consultar from "./components/consultar";
 const App = () => {
     return (
         <div>
@@ -29,6 +29,9 @@ const App = () => {
                 }}/>
                 <Route exact path="/ProyectoWebServlet/pregunta/:ID" render={props=>{var ID=props.match.params.ID;
                 return <Pregunta ID={ID}/>
+                }}/>
+                <Route exact path="/ProyectoWebServlet/consultar/:ID" render={props=>{var ID=props.match.params.ID;
+                return <Consultar ID={ID}/>
                 }}/>
 
                 <Route path="*" render={() => <Redirect to='/ProyectoWebServlet/'/>} />

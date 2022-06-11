@@ -26,10 +26,12 @@ import net.sf.json.JSONObject;
 public class svCharge extends HttpServlet {
 Connection conn;
 PrintWriter out;
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         {
+       
             conn=Conexion.getConnect();
             response.addHeader("Access-Control-Allow-Origin", "*");
             response.setCharacterEncoding("utf8");
@@ -51,7 +53,7 @@ PrintWriter out;
         Comprobacion=conn.createStatement();
         ResultSet ex=Comprobacion.executeQuery(consulta);
         while(ex.next()){
-    
+        
             jsonObject.put("TITLE",ex.getString(1));
              jsonObject.put("XRECTA",ex.getString(2));
           
@@ -78,12 +80,7 @@ PrintWriter out;
 
              jsonObject.put("CIRCONS",ex.getString(9));
              jsonObject.put("COORD",ex.getString(10));
-             out.print(jsonObject);
-
-
-
-
-/*Escritura de un objeto JSON para el almacenamiento y acceso a los datos de la pregunta*/
+      
         }
     } catch (SQLException ex) {
         out.print("Error:"+ex);

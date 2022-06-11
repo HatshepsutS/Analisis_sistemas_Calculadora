@@ -81,6 +81,9 @@ class Home extends React.Component {
                     <td>{preg.ID}</td>
                     <td>{preg.TITLE}</td>
                     <td>
+                    <Button variant="warning" style={{ margin: "12px" }}>
+                        <NavLink to={"/ProyectoWebServlet/consultar/"+preg.ID} className="CustomLink">Ver ejercicio</NavLink>
+                    </Button>
                     <Button variant="danger" style={{ margin: "12px" }} onClick={this.handleClick.bind(this, preg.ID)}>
                     Eliminar
                     </Button>
@@ -88,7 +91,7 @@ class Home extends React.Component {
                         <NavLink to={"/ProyectoWebServlet/modifica/"+preg.ID} className="CustomLink">Modificar</NavLink>
                     </Button>
                     <Button variant="success" style={{ margin: "12px" }}>    
-                        <NavLink to={"/ProyectoWebServlet/pregunta/"+preg.ID} className="CustomLink">Ver Ejercicio</NavLink>
+                        <NavLink to={"/ProyectoWebServlet/pregunta/"+preg.ID} className="CustomLink">Probar Ejercicio</NavLink>
                     </Button>
                     </td>
                     </tr>
