@@ -36,10 +36,10 @@ componentDidMount() {
         }))
     }
     //Funcion de validacion y realizacion de envio de informacion a nuestro servlet
-      validar=(Titulo,Tipo,X1,Y1,X2,Y2) =>{
+    validar=(Title,R_X,R_signo,R_constante,C_X,C_Y,C_Xsigno,C_Ysigno,C_constante)=>{
       
 
-        axios.get("http://localhost:8080/ProyectoWebServlet/svUpdate?ID_Pregunta="+this.props.ID+"&Titulo="+Titulo+"&Type="+Tipo+"&X1="+X1+"&Y1="+Y1+"&X2="+X2+"&Y2="+Y2)
+        axios.get("http://localhost:8080/ProyectoWebServlet/svUpdate?ID_Pregunta="+this.props.ID+"&Title="+Title+"&R_X="+R_X+"&R_signo="+R_signo+"&R_constante="+R_constante+"&C_X="+C_X+"&C_Xsigno="+C_Xsigno+"&C_Y="+C_Y+"&C_Ysigno="+C_Ysigno+"&C_constante="+C_constante)
           .then(() => this.setState({ redirect: true })).catch(error => {
             this.setState({ errorMessage: error.message });
             console.error('There was an error!', error);
@@ -140,7 +140,8 @@ componentDidMount() {
                  );
         })
         )}                 
-            <button className="btn btn-primary" onClick={() => this.validar(document.getElementById("Title").value,document.getElementById("Type").value,document.getElementById("X1").value,document.getElementById("Y1").value,document.getElementById("X2").value,document.getElementById("Y2").value)}>
+           
+           <button className="btn btn-primary" onClick={() => this.validar(document.getElementById("Title").value,document.getElementById("R_X").value,document.getElementById("R_signo").value,document.getElementById("R_constante").value,document.getElementById("C_X").value,document.getElementById("C_Y").value,document.getElementById("C_Xsigno").value,document.getElementById("C_Ysigno").value,document.getElementById("C_constante").value)}>
                 Submit
               </button>
             </div>

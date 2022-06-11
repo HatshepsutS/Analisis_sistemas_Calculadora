@@ -27,17 +27,17 @@ public class svUpdate extends HttpServlet {
             response.setContentType("application/json");
             out = response.getWriter();
 
-
-
         String id = request.getParameter("ID_Pregunta");
-        String title=request.getParameter("Titulo");
-        String type=request.getParameter("Type");
-        String x1=request.getParameter("X1");
-        String y1=request.getParameter("Y1");
-        String x2=request.getParameter("X2");
-        String y2=request.getParameter("Y2");
-
-
+        String Session= Conexion.getSession();
+        String Title = request.getParameter("Title");
+        String R_X=request.getParameter("R_X");
+        String R_signo=request.getParameter("R_signo");
+        String R_constante=request.getParameter("R_constante");
+        String C_X=request.getParameter("C_X");
+        String C_Xsigno=request.getParameter("C_Xsigno");
+        String C_Y=request.getParameter("C_Y");
+        String C_Ysigno=request.getParameter("C_Ysigno");
+        String C_constante=request.getParameter("C_constante");
 
 
 
@@ -45,7 +45,7 @@ public class svUpdate extends HttpServlet {
         PreparedStatement prp;
         /*Seleccion de base de datos*/
         try {
-            prp = conn.prepareStatement("use CRUD2");
+            prp = conn.prepareStatement("use Calculadora_Grafica");
             prp.executeUpdate();
         } catch (SQLException ex) {
             out.println("<h2>ERROR. No se pudo acceder a la base de datos</h2>"+ex);
@@ -54,8 +54,8 @@ public class svUpdate extends HttpServlet {
         PreparedStatement in;
         /*Actualizacion de base de datos y creacion de respuesta de confirmacion*/
         try {
-            out.print("Titulo"+title+"\nTipo:"+type);
-            in = conn.prepareStatement("update preguntas set Titulo='"+title+"', Tipo='" + type + "',X1='" + x1 + "',Y1='" + y1 + "',X2='" + x2 + "',Y2='" + y2 + "'   where ID_Pregunta='"+id+"';");
+            out.print("Titulo"+Title);
+            in = conn.prepareStatement("update ejercicios set Nombre_pregunta='"+Title+"', R_X ='" + R_X  + "',R_signo='" + R_signo + "', R_Constante='" +  R_constante + "', C_X='" +C_X + "', C_Y='" +C_Y + "', C_XSigno='"+C_Xsigno+"', C_YSigno='"+C_Ysigno+"',C_Constante='"+C_constante+"'   where idPregunta ='"+id+"';");
             in.executeUpdate();
             jsonObject.put("validacion","1");
         } catch (SQLException ex) {
