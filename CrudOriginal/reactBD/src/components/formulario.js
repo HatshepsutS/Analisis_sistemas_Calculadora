@@ -73,15 +73,15 @@ class Formulario extends React.Component {
 
      if (redirect) {
        //return window.location.href = "http://localhost:8080/ProyectoWebServlet/home";
-        //return <Redirect to='/ProyectoWebServlet/home'/>;
+         return <Redirect to='/ProyectoWebServlet/home'/>;
         }
         
       const qId = (new URLSearchParams(window.location.search).get("val") == "true")? true:false;
       const undiv=  <div className = "registro-container" style={styles} id="equis">
-               <h1 className="AlignCenter" > Crea una nueva pregunta </h1>
+               <h1 className="AlignCenter" > Crear un nuevo ejercicio  </h1>
                <div class="form-group">
-                <label class="form-label" for="Titulo">Titulo</label>
-                <input placeholder="Ingrese el titulo de la pregunta" type="text" id="Titulo" class="form-control" />
+                <label class="form-label" for="Titulo">Titulo del ejercicio </label>
+                <input placeholder="Ingrese el titulo o alias para el ejercicio" type="text" id="Titulo" class="form-control" />
                     </div>
                
                 <div class="form-group">

@@ -33,7 +33,7 @@ class Login extends React.Component {
             this.forceUpdate();
             return swal({
               title:"Bienvenido " +usuario,
-              text:"¡Te estabamos esperando perro !",
+              text:"¡Te estabamos esperando!",
               icon:"success",
               button:"Continuar"
             });
@@ -41,7 +41,7 @@ class Login extends React.Component {
 
           }else{
             return swal({
-              title:"ERROR",
+              title:"Error",
               text:"Usuario o contraseña incorrectos",
               icon:"error",
               button:"Intente de nuevo"

@@ -63,7 +63,7 @@ componentDidMount() {
         
       const qId = (new URLSearchParams(window.location.search).get("val") == "true")? true:false;
       const undiv=  <div className = "registro-container" style={styles} id="equis">
-                <h1 className="AlignCenter" > Modifica una nueva pregunta </h1>
+                <h1 className="AlignCenter" > Modifica un ejercicio </h1>
             {this.state.status===true &&
             (
             this.state.datos.map((preg,i)=>{

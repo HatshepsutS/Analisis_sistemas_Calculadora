@@ -1,6 +1,6 @@
 
 package Servlet;
-
+import utilitiesMath.Coordenadas;
 import DBCONN.Conexion;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -38,7 +38,9 @@ public class svUpdate extends HttpServlet {
         String C_Y=request.getParameter("C_Y");
         String C_Ysigno=request.getParameter("C_Ysigno");
         String C_constante=request.getParameter("C_constante");
-
+        Coordenadas cor= new Coordenadas();
+        String coordenadasRC =cor.getCoordenadas(Integer.parseInt(R_X),R_signo,Integer.parseInt(R_constante),Integer.parseInt(C_X),C_Xsigno,C_Ysigno,Integer.parseInt(C_Y),Integer.parseInt(C_constante));
+        
 
 
         JSONObject jsonObject=new  JSONObject();
@@ -55,7 +57,7 @@ public class svUpdate extends HttpServlet {
         /*Actualizacion de base de datos y creacion de respuesta de confirmacion*/
         try {
             out.print("Titulo"+Title);
-            in = conn.prepareStatement("update ejercicios set Nombre_pregunta='"+Title+"', R_X ='" + R_X  + "',R_signo='" + R_signo + "', R_Constante='" +  R_constante + "', C_X='" +C_X + "', C_Y='" +C_Y + "', C_XSigno='"+C_Xsigno+"', C_YSigno='"+C_Ysigno+"',C_Constante='"+C_constante+"'   where idPregunta ='"+id+"';");
+            in = conn.prepareStatement("update ejercicios set Nombre_pregunta='"+Title+"', R_X ='" + R_X  + "',R_signo='" + R_signo + "', R_Constante='" +  R_constante + "', C_X='" +C_X + "', C_Y='" +C_Y + "', C_XSigno='"+C_Xsigno+"', C_YSigno='"+C_Ysigno+"',C_Constante='"+C_constante+"', Coordenadas='"+coordenadasRC+"'   where idPregunta ='"+id+"';");
             in.executeUpdate();
             jsonObject.put("validacion","1");
         } catch (SQLException ex) {

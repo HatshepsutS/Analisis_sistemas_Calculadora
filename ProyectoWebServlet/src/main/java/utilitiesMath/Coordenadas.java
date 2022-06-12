@@ -5,7 +5,6 @@ import org.apache.commons.math3.util.Precision;
 import java.util.*;
 import java.util.List;
 import java.util.Arrays;
-
 public class Coordenadas {
 //Pasos a seguir 
     //(x-a)^2 + (y-b)^2= r^2
@@ -16,51 +15,58 @@ public class Coordenadas {
     //(x-C_X)^2 +(R_X +R_Constante-C_Y)^2= C_Constante
 
  public static String getCoordenadas(int R_X , String R_signo,int R_Constante,int C_X,String C_XSigno, String C_YSigno, int C_Y, int  C_Constante){
-    double y;
     ArrayList<Integer> binomio1 = new ArrayList<Integer>();
     ArrayList<Integer> binomio2 = new ArrayList<Integer>();
     ArrayList<Integer> ecuacion = new ArrayList<Integer>();
     String Coordenadas;
-    if (C_XSigno=="1"){
-        C_X=C_X-(2*C_X);     
+    double y;  
+    if (C_XSigno=="2"){
+        C_X=C_X*-1;     
      }
-    if (R_signo=="2"){
-        R_Constante=R_Constante-2*R_Constante;     
+    if (R_signo=="1"){
+        R_Constante=R_Constante*-1;     
      }
 
-     if (C_YSigno=="1"){
-        C_Y=C_Y-(2*C_Y); }  
+     if (C_YSigno=="2"){
+        C_Y=C_Y*-1; }  
  
+
+
    C_Constante=C_Constante-2*C_Constante;
-   binomio1= binomioalcuadrado(1,-C_X);
-   binomio2= binomioalcuadrado(R_X,R_Constante-C_Y);    
+ 
+   binomio1= binomioalcuadrado(1,C_X);
+   binomio2= binomioalcuadrado(R_X,R_Constante+C_Y);    
+
+
        for (int x = 0; x<3; x++){
             ecuacion.add(binomio1.get(x)+binomio2.get(x)) ;
             }
+
    int aux= ecuacion.get(2);
    ecuacion.remove(2);
+
    ecuacion.add(aux+C_Constante);
+   
+ 
    double resultados[] = ecuacion2Grado(ecuacion.get(0),ecuacion.get(1), ecuacion.get(2));
   
 if (resultados == null) {
         Coordenadas="No tiene solucion";
     } else {
-        if (resultados.length<2){ 
+        if (resultados.length<2){
             y= Precision.round(R_X*resultados[0]+R_Constante,2);
-            Coordenadas="("+resultados[0]+","+y+")";
+            Coordenadas="/Resultados ("+resultados[0]+","+y+")";
          }
          else {
-            y=Precision.round(R_X*resultados[0]+R_Constante,2);
-            Coordenadas="("+resultados[0]+","+y+")";
+             y=Precision.round(R_X*resultados[0]+R_Constante,2);
+             Coordenadas="/Resultados("+resultados[0]+","+y+")";
              y= Precision.round( R_X*resultados[1]+R_Constante,2);
-             Coordenadas+=",("+resultados[1]+","+y+")";         
+             Coordenadas+=",("+resultados[1]+","+y+")";     
+    
             }
     }
          return(Coordenadas); 
  }
-
-
-
 
 public static ArrayList<Integer> binomioalcuadrado(int a, int b){ 
     int q,w,e;
@@ -89,10 +95,6 @@ public static double[] ecuacion2Grado(int a, int b, int c) {
         return null;
     }
 }
-
-
-
-
 
 
 }

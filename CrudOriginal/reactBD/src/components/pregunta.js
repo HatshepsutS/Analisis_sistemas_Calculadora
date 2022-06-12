@@ -11,6 +11,7 @@ import Home from "./home"
 import { Chart as ChartJS } from 'chart.js/auto'
 import { Chart }            from 'react-chartjs-2'
 import { Line } from "react-chartjs-2";
+
 import swal from 'sweetalert';
 
 
@@ -20,11 +21,11 @@ class Pregunta extends React.Component {
       const styles = {
           padding : '5px'
       }
-      const { redirect } = this.state;
+     /* const { redirect } = this.state;
 
      if (redirect) {
         return <Redirect to='/ProyectoWebServlet/home'/>;
-        }
+        }*/
         
       const qId = (new URLSearchParams(window.location.search).get("val") == "true")? true:false;
       const undiv=  <div className = "registro-container" style={styles} id="equis">

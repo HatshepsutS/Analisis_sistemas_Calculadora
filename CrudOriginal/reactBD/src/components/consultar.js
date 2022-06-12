@@ -55,7 +55,7 @@ componentDidMount() {
         
       const qId = (new URLSearchParams(window.location.search).get("val") == "true")? true:false;
       const undiv=  <div className = "registro-container" style={styles} id="equis">
-                <h1 className="AlignCenter" > Modifica una nueva pregunta </h1>
+                <h1 className="AlignCenter" > Ver ejercicio </h1>
             {this.state.status===true &&
             (
             this.state.datos.map((preg,i)=>{
@@ -63,41 +63,18 @@ componentDidMount() {
         <div class="modify-form">
             <div class="form-group">
                 
-                 <label class="form-label">Titulo: {preg.TITLE}</label>
+                 <label class="form-label">Nombre del ejercicio : {preg.TITLE}</label>
                          </div>
                 <div class="form-group">
-                <h2 className="AlignCenter" > Datos de la recta</h2><h2 className="AlignCenter" > y= ax+b </h2>
-                <label class="form-label">Valor de a {preg.XRECTA}</label>
+                <h2 className="AlignCenter" > Recta</h2><h2 className="AlignCenter" > y= {preg.XRECTA}x{preg.SIGNORECTA}{preg.CONSRECTA}  </h2>
+                
                   </div>
-                <div class="form-group">
-                <label class="form-label">Signo de la constante {preg.SIGNORECTA}</label>            
-                  </div>
-                <div class="form-group">
-        
-                <label class="form-label">Constante de la recta (b)  {preg.CONSRECTA}</label>
                
-                 </div>
                 <div class="form-group">
                 <h2 className="AlignCenter" > Datos de la ecuación del círculo</h2>
-                <h2 className="AlignCenter" >(x-a)²+(y-b)²=r²</h2>
-                <label class="form-label">Valor de a {preg.XCIRC}</label>
-                </div>
-                <div class="form-group">
-                <label class="form-label" for="C_Xsigno">Signo de a </label>
-                <label class="form-label">Signo de a {preg.CIRCXSIGNO}</label>
-                
-                </div>
-                <div class="form-group">
-
-                <label class="form-label">Valor de b {preg.YCIRC}</label>
-                </div>
-                <div class="form-group">
-                <label class="form-label">Signo de b {preg.CIRCYSIGNO}</label>
-                </div>    
-                <div class="form-group">
-
-                <label class="form-label">Valor de r  {preg.CIRCONS}</label>
-                  </div>
+                <h2 className="AlignCenter" >(x{preg.CIRCXSIGNO}{preg.XCIRC})²+(y{preg.CIRCYSIGNO}{preg.YCIRC})²={preg.CIRCONS}²</h2>
+           
+                     </div>
 
                 <div class="form-group">
 

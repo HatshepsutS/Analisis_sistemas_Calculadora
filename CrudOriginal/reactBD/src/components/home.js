@@ -6,7 +6,8 @@ class Home extends React.Component {
 
     
     state = {
-        datos:[],status: false
+        datos:[],status: false,
+        redirect: false
     } 
     //Carga de lista json con todos los elementos de las preguntas existentes
     cargaDatos=()=>{
@@ -46,9 +47,9 @@ class Home extends React.Component {
     render() {
         const { redirect } = this.state;
 // funcion para redireccionar al menu del crud
-        if (redirect) {
-        return <Redirect to='/ProyectoWebServlet/home'/>;
-        }
+    if (redirect) {
+    return <Redirect to='/ProyectoWebServlet/home'/>;
+    }
         const { data, showAlert, alertText } = this.state;
         return (
             <Container className="MarginContainer" >
@@ -62,14 +63,14 @@ class Home extends React.Component {
                         : null
                 }
                 <Button variant="info" style={{ margin: "12px" }}>
-                    <Link to="/ProyectoWebServlet/formulario" className="CustomLink">Añadir nueva pregunta</Link>
+                    <Link to="/ProyectoWebServlet/formulario" className="CustomLink">Crear</Link>
                 </Button>
                 <Table striped bordered >
                     <thead>
                         <tr>
-                            <th> ID PREGUNTA </th>
-                            <th>Pregunta</th>
-                            <th>Acciones</th>
+                            <th>ID Ejercicio </th>
+                            <th>Ejercicio </th>
+                            <th>¿Qué quieres hacer?</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -82,7 +83,7 @@ class Home extends React.Component {
                     <td>{preg.TITLE}</td>
                     <td>
                     <Button variant="warning" style={{ margin: "12px" }}>
-                        <NavLink to={"/ProyectoWebServlet/consultar/"+preg.ID} className="CustomLink">Ver ejercicio</NavLink>
+                        <NavLink to={"/ProyectoWebServlet/consultar/"+preg.ID} className="CustomLink">Ver</NavLink>
                     </Button>
                     <Button variant="danger" style={{ margin: "12px" }} onClick={this.handleClick.bind(this, preg.ID)}>
                     Eliminar
@@ -91,7 +92,7 @@ class Home extends React.Component {
                         <NavLink to={"/ProyectoWebServlet/modifica/"+preg.ID} className="CustomLink">Modificar</NavLink>
                     </Button>
                     <Button variant="success" style={{ margin: "12px" }}>    
-                        <NavLink to={"/ProyectoWebServlet/pregunta/"+preg.ID} className="CustomLink">Probar Ejercicio</NavLink>
+                        <NavLink to={"/ProyectoWebServlet/pregunta/"+preg.ID} className="CustomLink">Probar</NavLink>
                     </Button>
                     </td>
                     </tr>
