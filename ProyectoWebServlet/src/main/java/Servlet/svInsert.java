@@ -2,6 +2,7 @@
 package Servlet;
 
 import DBCONN.Conexion;
+import utilitiesMath.Coordenadas;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
@@ -23,6 +24,7 @@ public class svInsert extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         conn = Conexion.getConnect();
+        Coordenadas cor= new Coordenadas();
         response.addHeader("Access-Control-Allow-Origin", "*");
             response.setCharacterEncoding("utf8");
             response.setContentType("application/json");
@@ -37,6 +39,8 @@ public class svInsert extends HttpServlet {
         String C_YsignoB=request.getParameter("C_YsignoB");
         String C_constanteB=request.getParameter("C_constanteB");
         String Session= Conexion.getSession();
+        String coordenadasRC =cor.getCoordenadas(Integer.parseInt(R_XB),R_signoB,Integer.parseInt(R_constanteB),Integer.parseInt(C_XB),C_XsignoB,C_YsignoB,Integer.parseInt(C_YB),Integer.parseInt(C_constanteB));
+        
         JSONObject jsonObject=new  JSONObject();
         PreparedStatement prp;
         try {
@@ -49,7 +53,7 @@ public class svInsert extends HttpServlet {
         PreparedStatement in;
         try {
            out.print("Titulo"+TituloB);
-            in = conn.prepareStatement("INSERT INTO ejercicios(fk_USERNAME,Nombre_pregunta,R_X,R_signo,R_Constante,C_X, C_Y,C_XSigno,C_YSigno,C_constante,Coordenadas) values('"+Session+"','"+TituloB+"','"+R_XB+"','"+R_signoB+"','"+R_constanteB+"','"+ C_XB+"','"+ C_YB+"','"+ C_XsignoB+"','"+ C_YsignoB+"','"+ C_constanteB+"', '(0,0)'   );");
+            in = conn.prepareStatement("INSERT INTO ejercicios(fk_USERNAME,Nombre_pregunta,R_X,R_signo,R_Constante,C_X, C_Y,C_XSigno,C_YSigno,C_constante,Coordenadas) values('"+Session+"','"+TituloB+"','"+R_XB+"','"+R_signoB+"','"+R_constanteB+"','"+ C_XB+"','"+ C_YB+"','"+ C_XsignoB+"','"+ C_YsignoB+"','"+ C_constanteB+"','"+coordenadasRC+"'   );");
             in.executeUpdate();
             jsonObject.put("validacion","1");
         } catch (SQLException ex) {

@@ -1,6 +1,6 @@
+utilitiesMath\Coordenadas.class
 Servlet\Login.class
 Servlet\svCharge.class
-Servlet\svUpFile.class
 Servlet\svLista.class
 DBCONN\Conexion.class
 Servlet\svInsert.class

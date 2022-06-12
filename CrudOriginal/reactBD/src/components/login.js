@@ -33,7 +33,7 @@ class Login extends React.Component {
             this.forceUpdate();
             return swal({
               title:"Bienvenido " +usuario,
-              text:"¡Te estabamos esperando!",
+              text:"¡Te estabamos esperando perro !",
               icon:"success",
               button:"Continuar"
             });
@@ -76,6 +76,10 @@ class Login extends React.Component {
    <button className="btn btn-primary" onClick={() => this.validar(document.getElementById("User").value,document.getElementById("password").value)}>
        Entrar
      </button>
+   
+
+
+
    </div>
       
      

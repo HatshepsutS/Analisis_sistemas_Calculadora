@@ -35,7 +35,6 @@ class Formulario extends React.Component {
         C_XsignoB:C_Xsigno,
         C_YsignoB:C_Ysigno,
         C_constanteB:C_constante
-
        } 
       
       
@@ -74,7 +73,7 @@ class Formulario extends React.Component {
 
      if (redirect) {
        //return window.location.href = "http://localhost:8080/ProyectoWebServlet/home";
-        return <Redirect to='/ProyectoWebServlet/home'/>;
+        //return <Redirect to='/ProyectoWebServlet/home'/>;
         }
         
       const qId = (new URLSearchParams(window.location.search).get("val") == "true")? true:false;
