@@ -9,7 +9,7 @@ import Select from "react-select";
 import { Link,NavLink } from "react-router-dom";
 import axios from "axios";
 import Home from "./home"
-
+import Grafica from "./graficar";
 
 class Pregunta extends React.Component {
   state={
@@ -66,23 +66,20 @@ componentDidMount() {
             <div class="form-group">
             <h1 className="AlignCenter" > Probando {preg.TITLE} </h1>
                 
-                         </div>
+            </div>
                 <div class="form-group">
-                <label class="form-label"> Recta:  y= {preg.XRECTA}x{preg.SIGNORECTA}{preg.CONSRECTA}  </label>
-                
-                  </div>
-               
+                <label class="form-label"> Recta:  y= {preg.XRECTA}x{preg.SIGNORECTA}{preg.CONSRECTA}  </label>                
+                </div>               
                 <div class="form-group">
-                <label class="form-label"> Círculo: (x{preg.CIRCXSIGNO}{preg.XCIRC})²+(y{preg.CIRCYSIGNO}{preg.YCIRC})²={preg.CIRCONS}²</label>
-           
-                     </div>
-
+                <label class="form-label"> Círculo: (x{preg.CIRCXSIGNO}{preg.XCIRC})²+(y{preg.CIRCYSIGNO}{preg.YCIRC})²={preg.CIRCONS}²</label>          
+                 </div>
                 <div class="form-group">
-
-          
-<label class="form-label">Coordenadas de instersección : {preg.COORD}</label>
-
-</div>
+                <label class="form-label">Coordenadas de instersección : {preg.COORD}</label>
+                <div className=" flex align-middle items-center">
+                    <Grafica H={preg.XRECTA} K={preg.CONSRECTA} a={preg.XCIRC} b={preg.YCIRC}></Grafica>
+              
+                </div>
+              </div>
                 
             </div>
                  );
