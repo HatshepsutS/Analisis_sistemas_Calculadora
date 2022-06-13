@@ -11,7 +11,7 @@ class Home extends React.Component {
     } 
     //Carga de lista json con todos los elementos de las preguntas existentes
     cargaDatos=()=>{
-        axios.get("http://localhost:8080/ProyectoWebServlet/svLista").then(response => { 
+        axios.get("http://localhost:8080/Calculadora_Grafica/svLista").then(response => { 
             console.log(response.data);
             this.setState({
                 datos:response.data
@@ -27,7 +27,7 @@ class Home extends React.Component {
     }
     //manejador que nos permite que pregunta desea ser eliminada de la base de datos
     handleClick(id) {
-        axios.get("http://localhost:8080/ProyectoWebServlet/svDelete?ID_Pregunta="+id).then(response => {
+        axios.get("http://localhost:8080/Calculadora_Grafica/svDelete?ID_Pregunta="+id).then(response => {
             console.info(response.data);
             if (response.data.message) {
                 alert("ELEMENTO "+id+" BORRADO CORRECTAMENTE");
@@ -48,7 +48,7 @@ class Home extends React.Component {
         const { redirect } = this.state;
 // funcion para redireccionar al menu del crud
     if (redirect) {
-    return <Redirect to='/ProyectoWebServlet/home'/>;
+    return <Redirect to='/Calculadora_Grafica/home'/>;
     }
         const { data, showAlert, alertText } = this.state;
         return (
@@ -63,7 +63,7 @@ class Home extends React.Component {
                         : null
                 }
                 <Button variant="info" style={{ margin: "12px" }}>
-                    <Link to="/ProyectoWebServlet/formulario" className="CustomLink">Crear</Link>
+                    <Link to="/Calculadora_Grafica/formulario" className="CustomLink">Crear</Link>
                 </Button>
                 <Table striped bordered >
                     <thead>
@@ -83,16 +83,16 @@ class Home extends React.Component {
                     <td>{preg.TITLE}</td>
                     <td>
                     <Button variant="warning" style={{ margin: "12px" }}>
-                        <NavLink to={"/ProyectoWebServlet/consultar/"+preg.ID} className="CustomLink">Ver</NavLink>
+                        <NavLink to={"/Calculadora_Grafica/consultar/"+preg.ID} className="CustomLink">Ver</NavLink>
                     </Button>
                     <Button variant="danger" style={{ margin: "12px" }} onClick={this.handleClick.bind(this, preg.ID)}>
                     Eliminar
                     </Button>
                     <Button variant="warning" style={{ margin: "12px" }}>
-                        <NavLink to={"/ProyectoWebServlet/modifica/"+preg.ID} className="CustomLink">Modificar</NavLink>
+                        <NavLink to={"/Calculadora_Grafica/modifica/"+preg.ID} className="CustomLink">Modificar</NavLink>
                     </Button>
                     <Button variant="success" style={{ margin: "12px" }}>    
-                        <NavLink to={"/ProyectoWebServlet/pregunta/"+preg.ID} className="CustomLink">Probar</NavLink>
+                        <NavLink to={"/Calculadora_Grafica/pregunta/"+preg.ID} className="CustomLink">Probar</NavLink>
                     </Button>
                     </td>
                     </tr>

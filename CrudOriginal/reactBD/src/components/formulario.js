@@ -24,7 +24,7 @@ class Formulario extends React.Component {
     validar=(Titulo,R_X,R_signo,R_constante,C_X,C_Y,C_Xsigno,C_Ysigno,C_constante) =>{ 
       
       console.log("Dios por favor funciona "+Titulo.value+'_'+R_X+'_'+R_signo+'_'+R_constante+'_'+C_X+'_'+C_Y+'_'+C_Xsigno+'_'+C_Ysigno+'_'+C_constante );
-      axios.get("http://localhost:8080/ProyectoWebServlet/svInsert",{
+      axios.get("http://localhost:8080/Calculadora_Grafica/svInsert",{
        params:{
         TituloB:Titulo.value,
         R_XB:R_X,
@@ -73,7 +73,7 @@ class Formulario extends React.Component {
 
      if (redirect) {
        //return window.location.href = "http://localhost:8080/ProyectoWebServlet/home";
-         return <Redirect to='/ProyectoWebServlet/home'/>;
+         return <Redirect to='/Calculadora_Grafica/home'/>;
         }
         
       const qId = (new URLSearchParams(window.location.search).get("val") == "true")? true:false;

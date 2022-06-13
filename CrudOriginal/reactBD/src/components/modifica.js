@@ -16,7 +16,7 @@ class Modifica extends React.Component {
   }
 
   cargaDatos=()=>{
-    axios.get("http://localhost:8080/ProyectoWebServlet/svCharge?ID_Modificar="+this.props.ID).then(response => { 
+    axios.get("http://localhost:8080/Calculadora_Grafica/svCharge?ID_Modificar="+this.props.ID).then(response => { 
         this.setState({
             datos:response.data
             ,status:true
@@ -39,7 +39,7 @@ componentDidMount() {
     validar=(Title,R_X,R_signo,R_constante,C_X,C_Y,C_Xsigno,C_Ysigno,C_constante)=>{
       
 
-        axios.get("http://localhost:8080/ProyectoWebServlet/svUpdate?ID_Pregunta="+this.props.ID+"&Title="+Title+"&R_X="+R_X+"&R_signo="+R_signo+"&R_constante="+R_constante+"&C_X="+C_X+"&C_Xsigno="+C_Xsigno+"&C_Y="+C_Y+"&C_Ysigno="+C_Ysigno+"&C_constante="+C_constante)
+        axios.get("http://localhost:8080/Calculadora_Grafica/svUpdate?ID_Pregunta="+this.props.ID+"&Title="+Title+"&R_X="+R_X+"&R_signo="+R_signo+"&R_constante="+R_constante+"&C_X="+C_X+"&C_Xsigno="+C_Xsigno+"&C_Y="+C_Y+"&C_Ysigno="+C_Ysigno+"&C_constante="+C_constante)
           .then(() => this.setState({ redirect: true })).catch(error => {
             this.setState({ errorMessage: error.message });
             console.error('There was an error!', error);
@@ -58,7 +58,7 @@ componentDidMount() {
       const { redirect } = this.state;
 // funcion para redireccionar al menu del crud
      if (redirect) {
-        return <Redirect to='/ProyectoWebServlet/home'/>;
+        return <Redirect to='/Calculadora_Grafica/home'/>;
         }
         
       const qId = (new URLSearchParams(window.location.search).get("val") == "true")? true:false;

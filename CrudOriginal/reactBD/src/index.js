@@ -15,26 +15,26 @@ const App = () => {
     return (
         <div>
             <Switch>
-                <Route exact path="/ProyectoWebServlet/">
+                <Route exact path="/Calculadora_Grafica/">
                     <Login />
                 </Route>
-                <Route exact path="/ProyectoWebServlet/home">
+                <Route exact path="/Calculadora_Grafica/home">
                     <Home />
                 </Route>
-                <Route exact path="/ProyectoWebServlet/formulario">
+                <Route exact path="/Calculadora_Grafica/formulario">
                     <Formulario />
                 </Route>
-                <Route exact path="/ProyectoWebServlet/modifica/:ID" render={props=>{var ID=props.match.params.ID;
+                <Route exact path="/Calculadora_Grafica/modifica/:ID" render={props=>{var ID=props.match.params.ID;
                 return <Modifica ID={ID}/>
                 }}/>
-                <Route exact path="/ProyectoWebServlet/pregunta/:ID" render={props=>{var ID=props.match.params.ID;
+                <Route exact path="/Calculadora_Grafica/pregunta/:ID" render={props=>{var ID=props.match.params.ID;
                 return <Pregunta ID={ID}/>
                 }}/>
-                <Route exact path="/ProyectoWebServlet/consultar/:ID" render={props=>{var ID=props.match.params.ID;
+                <Route exact path="/Calculadora_Grafica/consultar/:ID" render={props=>{var ID=props.match.params.ID;
                 return <Consultar ID={ID}/>
                 }}/>
 
-                <Route path="*" render={() => <Redirect to='/ProyectoWebServlet/'/>} />
+                <Route path="*" render={() => <Redirect to='/Calculadora_Grafica/'/>} />
             </Switch>
         </div>
     );

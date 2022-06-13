@@ -26,7 +26,7 @@ class Login extends React.Component {
             password: password
         }
 //Consulta de informacion con los datos ingresados en login
-        $.get("http://localhost:8080/ProyectoWebServlet/Login",datos, (resultado)=>{
+        $.get("http://localhost:8080/Calculadora_Grafica/Login",datos, (resultado)=>{
           if(resultado[0].usuario !="error"){
   
             this.state.val = true;
