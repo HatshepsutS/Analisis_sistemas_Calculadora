@@ -63,6 +63,7 @@ class Home extends React.Component {
               });
             });
          
+
             } else {
               swal("Tu ejercicio está a salvo");
             }
@@ -97,8 +98,8 @@ class Home extends React.Component {
                 <Button variant="info" style={{ margin: "12px" }}>
                     <Link to="/Calculadora_Grafica/formulario" className="CustomLink">Crear</Link>
                 </Button>
-                <Button variant="info" style={{ margin: "12px" }} onClick={() => window.location.reload(false)}>
-                Cerrar sesión
+                <Button variant="info" style={{ margin: "12px" }}>
+                <Link to="/Calculadora_Grafica/" className="CustomLink"> Cerrar sesión</Link>
                 </Button>
                 <Table striped bordered >
                     <thead>

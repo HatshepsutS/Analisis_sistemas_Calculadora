@@ -74,7 +74,7 @@ componentDidMount() {
                   </div>
                
                 <div class="form-group">
-                <label class="form-label"> Círculo: (x{preg.CIRCXSIGNO}{preg.XCIRC})²+(y{preg.CIRCYSIGNO}{preg.YCIRC})²={preg.CIRCONS}²</label>
+                <label class="form-label"> Círculo: (x{preg.CIRCXSIGNO}{preg.XCIRC})²+(y{preg.CIRCYSIGNO}{preg.YCIRC})²={preg.CIRCONS}</label>
            
                      </div>
                      <div className=" flex align-middle items-center">

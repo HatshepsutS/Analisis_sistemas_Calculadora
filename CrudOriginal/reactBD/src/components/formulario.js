@@ -53,7 +53,18 @@ class Formulario extends React.Component {
         console.log(error);
 
        })
+
        
+       jQuery(function ($) {
+        $("#select-1").on("change",function(){
+           $("#select-1").val($(this).val());
+       })
+       $("#select-2").on("change",function(){
+           $("#select-2").val($(this).val());
+       })
+       
+       
+   })
 
     }
   
@@ -133,18 +144,23 @@ class Formulario extends React.Component {
             <Button className="btn btn-primary">
                         <NavLink to={"/Calculadora_Grafica/home"} className="CustomLink">Regresar</NavLink>
                     </Button>  
+
+                    
             <button className="btn btn-primary" onClick={() => this.validar(document.getElementById("Titulo"),document.getElementById("R_X").value,document.getElementById("R_signo").value,document.getElementById("R_constante").value,document.getElementById("C_X").value,document.getElementById("C_Y").value,document.getElementById("C_Xsigno").value,document.getElementById("C_Ysigno").value,document.getElementById("C_constante").value)}>
                 Submit
               </button>
             </div>
        const esValido = (this.state.val) || qId?<Home></Home>: undiv
+
         return(
+
           <div>
 
             {esValido}
             {console.log(esValido)}
           </div>
-        )    
+        )   
+     
   
 
 }
