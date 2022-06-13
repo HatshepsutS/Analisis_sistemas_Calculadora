@@ -10,6 +10,8 @@ import { Link,NavLink } from "react-router-dom";
 import axios from "axios";
 import Home from "./home"
 import Grafica from "./graficar";
+
+
 class Consultar extends React.Component {
   state={
     val: false,

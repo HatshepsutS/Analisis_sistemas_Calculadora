@@ -3,6 +3,7 @@ import Form from "react-bootstrap/Form"
 import Button from "react-bootstrap/Button"
 import $ from "jquery"
 import { BrowserRouter } from 'react-router-dom';
+import { Link,NavLink } from "react-router-dom";
 import { browserHistory, Redirect } from "react-router";
 import ReactDOM from "react-dom"
 import Select from "react-select";
@@ -42,8 +43,10 @@ componentDidMount() {
         axios.get("http://localhost:8080/Calculadora_Grafica/svUpdate?ID_Pregunta="+this.props.ID+"&Title="+Title+"&R_X="+R_X+"&R_signo="+R_signo+"&R_constante="+R_constante+"&C_X="+C_X+"&C_Xsigno="+C_Xsigno+"&C_Y="+C_Y+"&C_Ysigno="+C_Ysigno+"&C_constante="+C_constante)
           .then(() => this.setState({ redirect: true })).catch(error => {
             this.setState({ errorMessage: error.message });
-            console.error('There was an error!', error);
+            
         });
+
+
      
     }
       handleChange(event) {    
@@ -140,7 +143,9 @@ componentDidMount() {
                  );
         })
         )}                 
-           
+             <Button className="btn btn-primary">
+                        <NavLink to={"/Calculadora_Grafica/home"} className="CustomLink">Regresar</NavLink>
+                    </Button>
            <button className="btn btn-primary" onClick={() => this.validar(document.getElementById("Title").value,document.getElementById("R_X").value,document.getElementById("R_signo").value,document.getElementById("R_constante").value,document.getElementById("C_X").value,document.getElementById("C_Y").value,document.getElementById("C_Xsigno").value,document.getElementById("C_Ysigno").value,document.getElementById("C_constante").value)}>
                 Submit
               </button>

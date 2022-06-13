@@ -6,6 +6,7 @@ import { browserHistory } from "react-router";
 import ReactDOM from "react-dom"
 import Home from "./home"
 import swal from 'sweetalert';
+import { Redirect } from 'react-router';
 
 class Login extends React.Component {
     

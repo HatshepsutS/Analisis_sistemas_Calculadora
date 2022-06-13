@@ -4,6 +4,7 @@ import Button from "react-bootstrap/Button"
 import $ from "jquery"
 import { BrowserRouter } from 'react-router-dom';
 import { browserHistory, Redirect } from "react-router";
+import { Link,NavLink } from "react-router-dom";
 import ReactDOM from "react-dom"
 import Select from "react-select";
 import axios from "axios";
@@ -36,7 +37,7 @@ class Formulario extends React.Component {
         C_YsignoB:C_Ysigno,
         C_constanteB:C_constante
        } 
-      
+       
       
       })
 
@@ -53,8 +54,6 @@ class Formulario extends React.Component {
 
        })
        
-
-        
 
     }
   
@@ -131,7 +130,9 @@ class Formulario extends React.Component {
             <label class="form-label" for="C_constante">Valor de r   </label>
             <input placeholder="Ingrese el valor de r" type="number" min="0" id="C_constante" class="form-control" />
             </div>
-
+            <Button className="btn btn-primary">
+                        <NavLink to={"/Calculadora_Grafica/home"} className="CustomLink">Regresar</NavLink>
+                    </Button>  
             <button className="btn btn-primary" onClick={() => this.validar(document.getElementById("Titulo"),document.getElementById("R_X").value,document.getElementById("R_signo").value,document.getElementById("R_constante").value,document.getElementById("C_X").value,document.getElementById("C_Y").value,document.getElementById("C_Xsigno").value,document.getElementById("C_Ysigno").value,document.getElementById("C_constante").value)}>
                 Submit
               </button>

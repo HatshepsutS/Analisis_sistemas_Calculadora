@@ -2,6 +2,8 @@ import React from "react";
 import { Button, Container, Table, Alert } from "react-bootstrap";
 import { Link,NavLink } from "react-router-dom";
 import axios from "axios";
+import swal from 'sweetalert';
+import { Redirect } from 'react-router';
 class Home extends React.Component {
 
     
@@ -26,7 +28,7 @@ class Home extends React.Component {
         
     }
     //manejador que nos permite que pregunta desea ser eliminada de la base de datos
-    handleClick(id) {
+   /* handleClick(id) {
         axios.get("http://localhost:8080/Calculadora_Grafica/svDelete?ID_Pregunta="+id).then(response => {
             console.info(response.data);
             if (response.data.message) {
@@ -42,7 +44,37 @@ class Home extends React.Component {
         }).finally(() => {
             window.location.reload(true);
         });
-    }    
+    }    */
+
+    handleClick(id) {
+
+        swal({
+            title: "¿Estás seguro?",
+            text: "No podrás recuperar este ejercicio",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+          })
+          .then((willDelete) => {
+            if (willDelete) {
+                axios.get("http://localhost:8080/Calculadora_Grafica/svDelete?ID_Pregunta="+id).then(response => {  
+                swal("Se ha eliminado tu ejercicio con éxito, refresca la página para ver los cambios", {
+                icon: "success",
+              });
+            });
+         
+            } else {
+              swal("Tu ejercicio está a salvo");
+            }
+          });
+
+
+
+
+    } 
+
+
+
     //Creacion de la tabla con los datos de nuestras preguntas y las diferentes opciones de cada una
     render() {
         const { redirect } = this.state;
@@ -64,6 +96,9 @@ class Home extends React.Component {
                 }
                 <Button variant="info" style={{ margin: "12px" }}>
                     <Link to="/Calculadora_Grafica/formulario" className="CustomLink">Crear</Link>
+                </Button>
+                <Button variant="info" style={{ margin: "12px" }} onClick={() => window.location.reload(false)}>
+                Cerrar sesión
                 </Button>
                 <Table striped bordered >
                     <thead>

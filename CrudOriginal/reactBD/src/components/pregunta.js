@@ -11,6 +11,7 @@ import axios from "axios";
 import Home from "./home"
 import Grafica from "./graficar";
 
+
 class Pregunta extends React.Component {
   state={
     val: false,
