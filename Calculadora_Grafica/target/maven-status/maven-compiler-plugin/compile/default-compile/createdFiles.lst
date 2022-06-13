@@ -4,6 +4,5 @@ Servlet\svCharge.class
 Servlet\svLista.class
 DBCONN\Conexion.class
 Servlet\svInsert.class
-Servlet\svEjercicio.class
 Servlet\svDelete.class
 Servlet\svUpdate.class

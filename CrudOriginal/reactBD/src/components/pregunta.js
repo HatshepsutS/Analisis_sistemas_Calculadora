@@ -38,7 +38,30 @@ componentDidMount() {
           comp: <Home></Home>
         }))
     }
-    //Funcion de validacion y realizacion de envio de informacion a nuestro servlet
+    validar=(Resultado,LaRespuesta) =>{
+      var datos={
+          Resultado:Resultado,
+          RealAnswer:LaRespuesta
+      }
+      
+      if(datos.Resultado==datos.RealAnswer){
+        //uso de sweetalert para avisar al usuario si es correcta su respuesta o no
+         return swal({
+           title:"¡Eres un genio!",
+           text:"La respuesta es correcta",
+           icon:"success",
+           button:"Continuar"
+         });
+      }
+        else{
+            return swal({
+           title:"No te desanimes pero..",
+           text:"Te equivocaste, la respuesta correcta es: "+datos.RealAnswer,
+           icon:"error",
+           button:"Continuar"
+         });
+        }
+  }
       
       handleChange(event) {    
           this.setState({value: event.target.value});  
@@ -65,21 +88,26 @@ componentDidMount() {
         <div class="modify-form">
             <div class="form-group">
             <h1 className="AlignCenter" > Probando {preg.TITLE} </h1>
-                
+            <label class="form-label"> Calcula la intersección entre la recta y el círculo dado, si no existe escribe "No tiene solución" de lo contrario introduce la respuesta en el siguiente formato (#,#), (#,#)  </label>      
             </div>
                 <div class="form-group">
-                <label class="form-label"> Recta:  y= {preg.XRECTA}x{preg.SIGNORECTA}{preg.CONSRECTA}  </label>                
+                <h3> Recta:  y= {preg.XRECTA}x{preg.SIGNORECTA}{preg.CONSRECTA}  </h3>                
                 </div>               
                 <div class="form-group">
-                <label class="form-label"> Círculo: (x{preg.CIRCXSIGNO}{preg.XCIRC})²+(y{preg.CIRCYSIGNO}{preg.YCIRC})²={preg.CIRCONS}</label>          
+                <h3> Círculo: (x{preg.CIRCXSIGNO}{preg.XCIRC})²+(y{preg.CIRCYSIGNO}{preg.YCIRC})²={preg.CIRCONS}</h3>          
                  </div>
                 <div class="form-group">
-                <label class="form-label">Coordenadas de instersección : {preg.COORD}</label>
                 <div className=" flex align-middle items-center">
                     <Grafica a_circ={preg.XCIRC} a_csigno={preg.CIRCXSIGNO} b_circ={preg.YCIRC} b_csigno={preg.CIRCYSIGNO} radioc={preg.RADIO} a_rect={preg.XRECTA}  b_rect={preg.CONSRECTA}   signorecta={preg.SIGNORECTA}></Grafica>
-              
                 </div>
               </div>
+              <div class="form-group"> 
+              <label class="form-label" for="Answer">Respuesta</label>
+                    <input placeholder="Ingrese la respuesta con un maximo de 2 decimales, en caso de ser entero escriba #.0" type="text" id="userAnswer"  />        
+                    <input value= {preg.COORD} type="hidden" id="LaRespuesta" class="form-control" />
+              </div>
+
+
                 
             </div>
                  );
@@ -88,6 +116,9 @@ componentDidMount() {
             
               <Button className="btn btn-primary" style={{ margin: "12px" }}>
                         <NavLink to={"/Calculadora_Grafica/home"} className="CustomLink">Regresar</NavLink>
+                    </Button>
+                    <Button className="btn btn-primary" style={{ margin: "12px" }} onClick={() => this.validar(document.getElementById("userAnswer").value,document.getElementById("LaRespuesta").value)}>
+                        Submit
                     </Button>
             </div>
         
