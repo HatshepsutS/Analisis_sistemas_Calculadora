@@ -13,8 +13,9 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import org.apache.commons.math3.util.Precision;
 import net.sf.json.JSONObject;
-
+import java.util.*;
 
 public class svCharge extends HttpServlet {
 Connection conn;
@@ -73,7 +74,8 @@ PrintWriter out;
 
              jsonObject.put("CIRCONS",ex.getString(9));
              jsonObject.put("COORD",ex.getString(10));
-      
+                
+              jsonObject.put("RADIO", String.valueOf(Math.sqrt(Integer.parseInt(ex.getString(9)))));
         }
     } catch (SQLException ex) {
         out.print("Error:"+ex);

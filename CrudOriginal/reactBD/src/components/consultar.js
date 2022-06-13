@@ -9,6 +9,7 @@ import Select from "react-select";
 import { Link,NavLink } from "react-router-dom";
 import axios from "axios";
 import Home from "./home"
+import Grafica from "./graficar";
 class Consultar extends React.Component {
   state={
     val: false,
@@ -74,13 +75,14 @@ componentDidMount() {
                 <label class="form-label"> Círculo: (x{preg.CIRCXSIGNO}{preg.XCIRC})²+(y{preg.CIRCYSIGNO}{preg.YCIRC})²={preg.CIRCONS}²</label>
            
                      </div>
+                     <div className=" flex align-middle items-center">
+                    <Grafica a_circ={preg.XCIRC} a_csigno={preg.CIRCXSIGNO} b_circ={preg.YCIRC} b_csigno={preg.CIRCYSIGNO} radioc={preg.RADIO} a_rect={preg.XRECTA}  b_rect={preg.CONSRECTA}   signorecta={preg.SIGNORECTA}></Grafica>
+              
+                     </div>
 
                 <div class="form-group">
-
-          
-<label class="form-label">Coordenadas de instersección : {preg.COORD}</label>
-
-</div>
+                <label class="form-label">Coordenadas de instersección : {preg.COORD}</label>
+                </div>
                 
             </div>
                  );

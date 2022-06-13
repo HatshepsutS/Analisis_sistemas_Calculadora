@@ -71,12 +71,12 @@ componentDidMount() {
                 <label class="form-label"> Recta:  y= {preg.XRECTA}x{preg.SIGNORECTA}{preg.CONSRECTA}  </label>                
                 </div>               
                 <div class="form-group">
-                <label class="form-label"> Círculo: (x{preg.CIRCXSIGNO}{preg.XCIRC})²+(y{preg.CIRCYSIGNO}{preg.YCIRC})²={preg.CIRCONS}²</label>          
+                <label class="form-label"> Círculo: (x{preg.CIRCXSIGNO}{preg.XCIRC})²+(y{preg.CIRCYSIGNO}{preg.YCIRC})²={preg.CIRCONS}</label>          
                  </div>
                 <div class="form-group">
                 <label class="form-label">Coordenadas de instersección : {preg.COORD}</label>
                 <div className=" flex align-middle items-center">
-                    <Grafica H={preg.XRECTA} K={preg.CONSRECTA} a={preg.XCIRC} b={preg.YCIRC}></Grafica>
+                    <Grafica a_circ={preg.XCIRC} a_csigno={preg.CIRCXSIGNO} b_circ={preg.YCIRC} b_csigno={preg.CIRCYSIGNO} radioc={preg.RADIO} a_rect={preg.XRECTA}  b_rect={preg.CONSRECTA}   signorecta={preg.SIGNORECTA}></Grafica>
               
                 </div>
               </div>
