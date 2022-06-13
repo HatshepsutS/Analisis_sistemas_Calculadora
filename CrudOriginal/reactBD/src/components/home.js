@@ -22,29 +22,12 @@ class Home extends React.Component {
         });
 
     } 
-    //funciones y componentes cargados al iniciar
+
     componentDidMount() {
         this.cargaDatos();
         
     }
-    //manejador que nos permite que pregunta desea ser eliminada de la base de datos
-   /* handleClick(id) {
-        axios.get("http://localhost:8080/Calculadora_Grafica/svDelete?ID_Pregunta="+id).then(response => {
-            console.info(response.data);
-            if (response.data.message) {
-                alert("ELEMENTO "+id+" BORRADO CORRECTAMENTE");
-                this.setState({ redirect: true });
-            } else {
-                alert("ELEMENTO "+id+" BORRADO CORRECTAMENTE");
-                this.setState({ redirect: true })
-            }
-        }).catch(error => {
-            console.info(error);
-            alert(response.data.message);
-        }).finally(() => {
-            window.location.reload(true);
-        });
-    }    */
+   
 
     handleClick(id) {
 
@@ -74,19 +57,16 @@ class Home extends React.Component {
 
     } 
 
-
-
-    //Creacion de la tabla con los datos de nuestras preguntas y las diferentes opciones de cada una
     render() {
         const { redirect } = this.state;
-// funcion para redireccionar al menu del crud
+
     if (redirect) {
     return <Redirect to='/Calculadora_Grafica/home'/>;
     }
         const { data, showAlert, alertText } = this.state;
         return (
             <Container className="MarginContainer" >
-                <h1 className="AlignCenter" > CREAR, ALTAS, BAJAS Y CAMBIOS </h1>
+                <h1 className="AlignCenter" >CALCULADORA GRÁFICA DE LA INTERSECCIÓN ENTRE UNA RECTA Y UN CÍRCULO</h1>
                 <hr style={{ width: "80%" }} />
                 {
                     showAlert ?
